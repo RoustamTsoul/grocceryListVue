@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div class="container">
+  <GroceryList/>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import GroceryList from './components/GroceryList.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    GroceryList
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+*{
+padding: 0;
+margin: 0;
 }
+
+body{
+font-family: 'Lobster', cursive;
+}
+
+.container{
+width: 90%;
+margin: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
 </style>
