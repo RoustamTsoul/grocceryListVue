@@ -2,11 +2,11 @@
   <div class="grocery">
     <h1 class="title">Grocery List</h1>
     <div class="form">
-        <input class="input" type="text">
-        <i class="bi bi-pencil-fill"></i>
+        <input @keyup.enter="addItems" v-model="inputValue" class="input" type="text" >
+        <i @click="deleteItems" class="bi bi-pencil-fill"></i>
     </div>
     <div class="allIttems">
-        <h2 class="items"></h2>
+        <h2 @click="onItemClick(item)"  v-for="(item, index) of completeList" :key="index" class="item" :class="{'item--done': doneList.includes(item)}">{{ item }}</h2>
     </div>
   </div>
 </template>
@@ -15,12 +15,26 @@
 export default {
     data(){
         return{
-
+            inputValue:'',
+            completeList:[], 
+            doneList:[], 
         }
     },
 
     methods:{
-        
+        addItems(){
+            const newItem = "- " + this.inputValue;
+            this.completeList.push(newItem);
+            this.inputValue = "";
+        },
+
+        deleteItems(){
+            this.completeList = [];
+        },
+
+        onItemClick(item){
+            this.doneList.push(item)
+        }
     }
 }
 </script>
@@ -78,6 +92,14 @@ margin-right: 15px;
 margin-top: 15px;
 margin-bottom: 10px;
 font-size: 2rem;
+}
+
+.item{
+    color: rgb(15, 15, 15);
+}
+
+.item--done{
+    text-decoration-line: line-through;
 }
 
 </style>
